@@ -1,47 +1,88 @@
-Portfólio de Fotografia em React
-Este é um projeto de portfólio para fotógrafos, desenvolvido com React e TypeScript, e inicializado com Create React App.
+# Portfólio de Fotografia
 
-Estrutura de Pastas
-O projeto utiliza uma estrutura de pastas organizada para separar responsabilidades e facilitar a manutenção:
+Este é um projeto de portfólio para fotógrafos, criado com **React** e **TypeScript**. O objetivo é fornecer uma plataforma limpa, moderna e responsiva para exibir trabalhos fotográficos.
 
+![Exemplo do Portfólio](URL_DA_SUA_IMAGEM_AQUI)
+
+---
+
+## ✨ Funcionalidades
+
+* **Galeria de Fotos:** Uma seção em grid para exibir suas melhores fotografias.
+* **Seção Sobre:** Um espaço para contar sua história e paixão pela fotografia.
+* **Formulário de Contato:** Um formulário simples para que potenciais clientes possam entrar em contato.
+* **Design Responsivo:** Adaptável para visualização em desktops, tablets e celulares.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+* **React:** Biblioteca para construção da interface de usuário.
+* **TypeScript:** Superset do JavaScript que adiciona tipagem estática.
+* **Bootstrap:** Framework CSS para estilização rápida e responsiva.
+* **Create React App:** Ambiente configurado para o desenvolvimento de aplicações React.
+
+---
+
+## 📂 Estrutura do Projeto
+
+O código está organizado da seguinte forma para facilitar a manutenção e escalabilidade:
+ ```
 src
-|-- assets/         # Para imagens, fontes e estilos globais
+|-- assets/         # Imagens, fontes e estilos globais
 |-- components/     # Componentes React reutilizáveis
 |   |-- layout/     # Componentes de estrutura (Header, Footer)
-|   +-- ui/         # Componentes de interface (Galeria, Formulário)
-|-- pages/          # Componentes que representam uma página inteira
-|-- hooks/          # Hooks customizados
-|-- App.tsx         # Componente principal da aplicação (agora em pages/HomePage.tsx)
+|   +-- ui/         # Componentes de interface (Galeria, Formulário de Contato)
+|-- pages/          # Componentes que representam páginas inteiras (Ex: HomePage)
 +-- index.tsx       # Ponto de entrada da aplicação
-Como Customizar o Portfólio
-Adicionar suas Fotos: Coloque suas imagens na pasta src/assets/images/portfolio/ e depois importe-as no componente src/components/ui/Gallery.tsx.
+ ```
+---
 
-Alterar os Textos:
+## 🏁 Como Começar
 
-Para o título e rodapé, modifique os arquivos em src/components/layout/Header.tsx e src/components/layout/Footer.tsx.
+Siga os passos abaixo para executar o projeto localmente.
 
-Para a seção "Sobre Mim", edite o componente About dentro de src/pages/HomePage.tsx.
+### **Pré-requisitos**
 
-Scripts Disponíveis
-No diretório do projeto, você pode executar:
+* Você precisa ter o [Node.js](https://nodejs.org/) (versão 14 ou superior) e o npm instalados em sua máquina.
 
+### **Instalação**
+
+1.  Clone o repositório:
+    ```bash
+    git clone https://URL_DO_SEU_REPOSITORIO.git
+    ```
+
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd nome-do-projeto
+    ```
+
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+### **Executando o Projeto**
+
+Para iniciar o servidor de desenvolvimento, execute:
+```bash
 npm start
-Executa o aplicativo no modo de desenvolvimento.
+```
+Isso abrirá o projeto em http://localhost:3000 no seu navegador.
 
-Abra http://localhost:3000 para visualizá-lo no navegador.
 
-A página será recarregada se você fizer edições.
+### **🛠️ Scripts Disponíveis**
 
-npm test
-Inicia o executor de testes no modo de observação interativo.
+```npm start```: Inicia o servidor de desenvolvimento.
 
-npm run build
-Constrói o aplicativo para produção na pasta build.
+```npm run build```: Gera a versão de produção do projeto na pasta build.
 
-npm run eject
-Nota: esta é uma operação de sentido único. Uma vez que você eject, não pode mais voltar!
+```npm test```: Executa os testes em modo interativo.
 
-Saiba Mais
-Você pode aprender mais na documentação do Create React App.
+### **🎨 Como Personalizar**
 
-Para aprender React, confira a documentação do React.
+Para adicionar suas fotos: Coloque os arquivos de imagem na pasta ```src/assets/images/``` e importe-os no arquivo ```src/components/ui/Gallery.tsx```.
+
+Para alterar os textos: Modifique o conteúdo diretamente nos componentes localizados em ```src/components/``` e ```src/pages/```.
+
