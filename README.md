@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# Portfólio de Fotografia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto de portfólio para fotógrafos, criado com **React** e **TypeScript**. O objetivo é fornecer uma plataforma limpa, moderna e responsiva para exibir trabalhos fotográficos.
 
-## Available Scripts
+![Exemplo do Portfólio](URL_DA_SUA_IMAGEM_AQUI)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* **Galeria de Fotos:** Uma seção em grid para exibir suas melhores fotografias.
+* **Seção Sobre:** Um espaço para contar sua história e paixão pela fotografia.
+* **Formulário de Contato:** Um formulário simples para que potenciais clientes possam entrar em contato.
+* **Design Responsivo:** Adaptável para visualização em desktops, tablets e celulares.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **React:** Biblioteca para construção da interface de usuário.
+* **TypeScript:** Superset do JavaScript que adiciona tipagem estática.
+* **Bootstrap:** Framework CSS para estilização rápida e responsiva.
+* **Create React App:** Ambiente configurado para o desenvolvimento de aplicações React.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Estrutura do Projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O código está organizado da seguinte forma para facilitar a manutenção e escalabilidade:
+ ```
+src
+|-- assets/         # Imagens, fontes e estilos globais
+|-- components/     # Componentes React reutilizáveis
+|   |-- layout/     # Componentes de estrutura (Header, Footer)
+|   +-- ui/         # Componentes de interface (Galeria, Formulário de Contato)
+|-- pages/          # Componentes que representam páginas inteiras (Ex: HomePage)
++-- index.tsx       # Ponto de entrada da aplicação
+ ```
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🏁 Como Começar
 
-### `npm run eject`
+Siga os passos abaixo para executar o projeto localmente.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### **Pré-requisitos**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Você precisa ter o [Node.js](https://nodejs.org/) (versão 14 ou superior) e o npm instalados em sua máquina.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### **Instalação**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  Clone o repositório:
+    ```bash
+    git clone https://URL_DO_SEU_REPOSITORIO.git
+    ```
 
-## Learn More
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd nome-do-projeto
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **Executando o Projeto**
+
+Para iniciar o servidor de desenvolvimento, execute:
+```bash
+npm start
+```
+Isso abrirá o projeto em http://localhost:3000 no seu navegador.
+
+
+### **🛠️ Scripts Disponíveis**
+
+```npm start```: Inicia o servidor de desenvolvimento.
+
+```npm run build```: Gera a versão de produção do projeto na pasta build.
+
+```npm test```: Executa os testes em modo interativo.
+
+### **🎨 Como Personalizar**
+
+Para adicionar suas fotos: Coloque os arquivos de imagem na pasta ```src/assets/images/``` e importe-os no arquivo ```src/components/ui/Gallery.tsx```.
+
+Para alterar os textos: Modifique o conteúdo diretamente nos componentes localizados em ```src/components/``` e ```src/pages/```.
+
