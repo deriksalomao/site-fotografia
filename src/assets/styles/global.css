@@ -1,43 +1,96 @@
-.App {
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
   color: white;
-  text-align: center;
+  background: url('../images/hero-background.jpg') no-repeat center center/cover;
+  position: relative;
 }
 
-nav a {
-  margin: 0 15px;
-  color: #61dafb;
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative; 
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.main-nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.main-nav a {
+  color: white;
   text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-main {
-  padding: 20px;
-}
-
-section {
-  margin-bottom: 40px;
-}
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px; 
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
 }
+
+
+.about-section {
+  text-align: center;
+  max-width: 800px;
+}
+
+.about-section h2 {
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+
+#contact .card {
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 
 .App-footer {
   text-align: center;
-  padding: 20px;
-  background-color: #282c34;
-  color: white;
+  padding: 30px;
+  background-color: #f8f9fa;
+  color: #6c757d;
 }
