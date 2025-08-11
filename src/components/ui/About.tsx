@@ -3,14 +3,14 @@ import React from 'react';
 function About() {
   return (
     <section id="about" className="about-section">
-      <h2>Sobre Mim</h2>
+      <h2>Prazer em te conhecer!</h2>
       <div className="about-content">
         <div className="about-text">
           <p>
-            Olá! Sou um fotógrafo apaixonado por capturar a essência de momentos, pessoas e lugares. Meu trabalho é focado em criar imagens que contam histórias e transmitem emoções verdadeiras.
+            Sou de São Paulo, minha história com a fotografia começou na adolescência, quando tive meu primeiro contato com a área. Foi amor à primeira vista, e desde então não parei mais.
           </p>
           <p>
-            Com anos de experiência, busco sempre a luz perfeita e o ângulo ideal para transformar o ordinário em extraordinário.
+            Formada em produção Audiovisual e com 3 anos de experiência no mercado, trabalho como fotógrafa. Minha trajetória me ensinou a ser adaptável e apaixonada pelo ritmo/cultura frenética de São Paulo.
           </p>
         </div>
         {/* Opcional: Adicione uma imagem sua aqui */}

@@ -2,23 +2,25 @@ import React from 'react';
 
 function ContactForm() {
   return (
-    <section id="contact" className="d-flex justify-content-center align-items-center bg-light py-5">
-      <div className="card p-4 shadow-sm" style={{ width: '300px' }}>
-        <h3 className="text-center mb-4">Contato</h3>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Nome</label>
-            <input type="text" className="form-control" id="name" placeholder="Seu nome" />
+    <section id="contact" className="contact-section">
+      <div className="contact-content">
+        <h2>Vamos Conversar</h2>
+        <p>Tem um projeto em mente ou gostaria de fazer um orçamento? Me envie uma mensagem!</p>
+        
+        <form className="contact-form">
+          <div className="form-group">
+            <label htmlFor="name">Nome</label>
+            <input type="text" id="name" name="name" required />
           </div>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
-            <input type="email" className="form-control" id="email" placeholder="email@exemplo.com" />
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email" required />
           </div>
-          <div className="mb-4">
-            <label htmlFor="message" className="form-label">Mensagem</label>
-            <textarea className="form-control" id="message" rows={3} placeholder="Sua mensagem"></textarea>
+          <div className="form-group">
+            <label htmlFor="message">Mensagem</label>
+            <textarea id="message" name="message" rows={4} required></textarea>
           </div>
-          <button type="submit" className="btn btn-primary w-100">Enviar</button>
+          <button type="submit" className="submit-btn">Enviar Mensagem</button>
         </form>
       </div>
     </section>

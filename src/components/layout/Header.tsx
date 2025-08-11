@@ -4,8 +4,8 @@ function Header() {
   return (
     <header className="hero-section">
       <div className="hero-content">
-        <h1>Nome do Fotógrafo</h1>
-        <p>Fotografia de Retrato & Estilo de Vida</p>
+        <h1>ROBERTA LIMA</h1>
+        <p>Fotografia Urbana, Noturna e Eventos</p>
       </div>
       <nav className="main-nav">
         <a href="#gallery">Galeria</a>

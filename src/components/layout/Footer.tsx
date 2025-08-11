@@ -4,7 +4,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="App-footer">
-      <p>&copy; {currentYear} Nome do Fotógrafo. Todos os direitos reservados.</p>
+      <p>&copy; {currentYear} Roberta C. de Lima. Todos os direitos reservados.</p>
     </footer>
   );
 }

@@ -1,3 +1,4 @@
+/* --- Hero Section (Header) --- */
 .hero-section {
   height: 100vh;
   display: flex;
@@ -17,7 +18,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5); /* Escurecemos um pouco mais a sobreposição */
 }
 
 .hero-content {
@@ -26,20 +27,22 @@
 }
 
 .hero-content h1 {
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 4.5rem; /* Título um pouco maior */
+  font-weight: 700;
   margin: 0;
+  letter-spacing: 1px;
 }
 
 .hero-content p {
   font-size: 1.2rem;
   margin-top: 10px;
+  color: rgba(255, 255, 255, 0.8); /* Subtítulo com leve transparência */
 }
 
 .main-nav {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 40px;
   z-index: 1;
 }
 
@@ -49,13 +52,38 @@
   margin: 0 15px;
   font-size: 1rem;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
+.main-nav a:hover {
+  color: #a0a0a0; /* Efeito hover sutil */
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Altura do gradiente/esfumaçado */
+  background: linear-gradient(to top, #121212, transparent);
+  z-index: 1;
+}
+
+/* --- Gallery Section --- */
+#gallery h2,
+.about-section h2,
+.contact-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px; 
+  gap: 10px;
 }
 
 .gallery-item img {
@@ -63,34 +91,172 @@
   height: 100%;
   object-fit: cover; 
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03); /* Efeito de zoom sutil no hover */
+}
+
+/* --- Estilos do Modal da Galeria --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Animação de fade-in e fade-out */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Classe que ativa o modal */
+.modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+
+  /* Animação de zoom-in */
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+/* A imagem também anima */
+.modal-overlay.is-open .modal-content {
+  transform: scale(1);
 }
 
 
+.modal-content img {
+  width: 100%;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain; /* Garante que a proporção da imagem seja mantida */
+  display: block;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+/* --- About Section --- */
 .about-section {
   text-align: center;
   max-width: 800px;
 }
 
-.about-section h2 {
+.about-text p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #b3b3b3; /* Cor do texto mais suave que branco puro */
+}
+
+/* --- Contact Form Section (Dark Mode) --- */
+.contact-section {
+  text-align: center;
+  /* background-color: #1a1a1a; Fundo da seção de contato um pouco mais claro */
+  padding-bottom: 80px;
+}
+
+.contact-content p {
+  color: #a0a0a0;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-group {
   margin-bottom: 20px;
 }
 
-.about-text p {
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #555;
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ccc;
+  font-weight: bold;
 }
 
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #222;
+  color: #fff;
+  transition: border-color 0.3s;
+}
 
-#contact .card {
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #fff; /* Borda branca ao focar */
+}
+
+.submit-btn {
+  background-color: #fff;
+  color: #121212;
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px 30px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
 }
 
+.submit-btn:hover {
+  background-color: #ccc;
+}
 
+/* --- Footer --- */
 .App-footer {
   text-align: center;
-  padding: 30px;
-  background-color: #f8f9fa;
-  color: #6c757d;
+  padding: 40px;
+  background-color: #000;
+  color: #888;
+}
+
+/* --- Animação de Scroll --- */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
