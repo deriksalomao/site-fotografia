@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
 
-// Suas imagens importadas
+// Suas imagens
 import photo1 from '../../assets/images/portfolio/imagem-1.jpg';
 import photo2 from '../../assets/images/portfolio/imagem-2.jpg';
 import photo3 from '../../assets/images/portfolio/imagem-3.jpg';
@@ -15,6 +15,23 @@ function Gallery() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
 
+  // Efeito para aplicar/remover o desfoque no fundo
+  useEffect(() => {
+    const mainContent = document.querySelector('main');
+    const headerContent = document.querySelector('.hero-section');
+    const footerContent = document.querySelector('.App-footer');
+
+    if (isModalOpen) {
+      mainContent?.classList.add('content-blur');
+      headerContent?.classList.add('content-blur');
+      footerContent?.classList.add('content-blur');
+    } else {
+      mainContent?.classList.remove('content-blur');
+      headerContent?.classList.remove('content-blur');
+      footerContent?.classList.remove('content-blur');
+    }
+  }, [isModalOpen]);
+
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
     setIsModalOpen(true);
@@ -27,7 +44,7 @@ function Gallery() {
   return (
     <>
       <section id="gallery">
-        <h2>Galeria</h2>
+        <h2>GALERIA</h2>
         <div className="gallery-grid">
           {images.map((image, index) => (
             <div

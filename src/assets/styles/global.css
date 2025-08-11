@@ -1,3 +1,8 @@
+/* --- Estilos de Tipografia --- */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
 /* --- Hero Section (Header) --- */
 .hero-section {
   height: 100vh;
@@ -116,13 +121,14 @@
   /* Animação de fade-in e fade-out */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 
 /* Classe que ativa o modal */
 .modal-overlay.is-open {
   opacity: 1;
   visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s;
 }
 
 .modal-content {
@@ -259,4 +265,57 @@
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* --- Estilos para Ícones Sociais no Rodapé --- */
+.social-links {
+  margin-bottom: 20px;
+}
+
+.social-links a {
+  color: #888; /* Cor dos ícones sociais */
+  font-size: 2rem; /* Aumenta o tamanho dos ícones. */
+  margin: 0 15px;
+  transition: color 0.3s ease; /* Adiciona uma transição suave para o hover */
+} 
+
+.social-links a:hover {
+  color: #fff; /* Altera a cor para branco quando o mouse passa por cima */
+}
+
+/* --- Estilos para o Botão Voltar ao Topo --- */
+.back-to-top button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff;
+  color: #121212;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  
+  /* Animação de fade */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top button.is-visible {
+  opacity: 0.8;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top button:hover {
+  opacity: 1;
+  transform: scale(1.1) translateY(0);
 }

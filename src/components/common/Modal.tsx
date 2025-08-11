@@ -7,8 +7,10 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc }) => {
-  // Não renderiza nada se não estiver aberto
-  if (!isOpen) return null;
+  // Não renderiza o componente se ele não estiver aberto
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     // Adiciona a classe 'is-open' quando a propriedade isOpen for verdadeira
