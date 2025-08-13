@@ -1,70 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import Modal from '../common/Modal';
+import React, { useState } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
 
-// Suas imagens
-import photo1 from '../../assets/images/portfolio/imagem-1.jpg';
-import photo2 from '../../assets/images/portfolio/imagem-2.jpg';
-import photo3 from '../../assets/images/portfolio/imagem-3.jpg';
-import photo4 from '../../assets/images/portfolio/imagem-4.jpg';
-import photo5 from '../../assets/images/portfolio/imagem-5.jpg';
-import photo6 from '../../assets/images/portfolio/imagem-6.jpg';
+// Lógica de importação automática de imagens
+const imageContext = require.context('../../assets/images/portfolio', false, /\.(png|jpe?g|svg)$/);
+const allImages: string[] = imageContext.keys().map(imageContext) as string[];
 
-function Gallery() {
-  const images: string[] = [photo1, photo2, photo3, photo4, photo5, photo6];
+const ITEMS_PER_PAGE = 6;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+// Componente para cada item da galeria
+const GalleryItem = ({ image, onClick, index }: { image: string; onClick: () => void; index: number }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  return (
+    <div ref={ref} className={`gallery-item ${inView ? 'is-visible' : ''}`} onClick={onClick}>
+      <img src={image} alt={`Fotografia de Roberta C. de Lima ${index + 1}`} />
+    </div>
+  );
+};
 
-  // Efeito para aplicar/remover o desfoque no fundo
-  useEffect(() => {
-    const mainContent = document.querySelector('main');
-    const headerContent = document.querySelector('.hero-section');
-    const footerContent = document.querySelector('.App-footer');
+interface GalleryProps {
+  onImageClick: (imageSrc: string) => void;
+}
 
-    if (isModalOpen) {
-      mainContent?.classList.add('content-blur');
-      headerContent?.classList.add('content-blur');
-      footerContent?.classList.add('content-blur');
-    } else {
-      mainContent?.classList.remove('content-blur');
-      headerContent?.classList.remove('content-blur');
-      footerContent?.classList.remove('content-blur');
-    }
-  }, [isModalOpen]);
+const Gallery: React.FC<GalleryProps> = ({ onImageClick }) => {
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const openModal = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
-    setIsModalOpen(true);
-  };
+  const totalPages = Math.ceil(allImages.length / ITEMS_PER_PAGE);
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const currentImages = allImages.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1));
+  const goToPrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 0));
 
   return (
-    <>
-      <section id="gallery">
-        <h2>GALERIA</h2>
-        <div className="gallery-grid">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="gallery-item"
-              onClick={() => openModal(image)}
-            >
-              <img src={image} alt={`Fotografia de Roberta C. de Lima ${index + 1}`} />
-            </div>
-          ))}
+    <section id="gallery">
+      <h2>Galeria</h2>
+      <div className="gallery-wrapper">
+        <button onClick={goToPrevPage} disabled={currentPage === 0} className="gallery-nav-arrow left" aria-label="Anterior">
+          <FaChevronLeft />
+        </button>
+        
+        <div className="masonry-content-wrapper">
+          <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+            <Masonry gutter="15px">
+              {currentImages.map((image, index) => (
+                <GalleryItem 
+                  key={startIndex + index} 
+                  image={image} 
+                  onClick={() => onImageClick(image)} // Chama a função do componente pai
+                  index={index} 
+                />
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
         </div>
-      </section>
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        imageSrc={selectedImage}
-      />
-    </>
+        <button onClick={goToNextPage} disabled={currentPage >= totalPages - 1} className="gallery-nav-arrow right" aria-label="Próximo">
+          <FaChevronRight />
+        </button>
+      </div>
+    </section>
   );
-}
+};
 
 export default Gallery;

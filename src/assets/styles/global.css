@@ -23,7 +23,7 @@ h1, h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Escurecemos um pouco mais a sobreposição */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
@@ -32,7 +32,7 @@ h1, h2 {
 }
 
 .hero-content h1 {
-  font-size: 4.5rem; /* Título um pouco maior */
+  font-size: 4.5rem;
   font-weight: 700;
   margin: 0;
   letter-spacing: 1px;
@@ -41,7 +41,7 @@ h1, h2 {
 .hero-content p {
   font-size: 1.2rem;
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.8); /* Subtítulo com leve transparência */
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .main-nav {
@@ -61,7 +61,7 @@ h1, h2 {
 }
 
 .main-nav a:hover {
-  color: #a0a0a0; /* Efeito hover sutil */
+  color: #a0a0a0;
 }
 
 .hero-section::after {
@@ -70,7 +70,7 @@ h1, h2 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 150px; /* Altura do gradiente/esfumaçado */
+  height: 150px;
   background: linear-gradient(to top, #121212, transparent);
   z-index: 1;
 }
@@ -85,23 +85,69 @@ h1, h2 {
     font-weight: 700;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
+.gallery-item {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gallery-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; 
   display: block;
   transition: transform 0.3s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.03); /* Efeito de zoom sutil no hover */
+    transform: scale(1.03);
 }
+
+/* --- Estilos para Navegação da Galeria (Hover e Fixo) --- */
+.gallery-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.masonry-content-wrapper {
+  flex: 1; 
+  min-width: 0;
+  min-height: 500px; /* Garante a altura mínima para estabilizar as setas */
+}
+
+.gallery-nav-arrow {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.gallery-wrapper:hover .gallery-nav-arrow {
+  opacity: 1;
+}
+
+.gallery-nav-arrow:hover:not(:disabled) {
+  color: #a0a0a0;
+}
+
+.gallery-nav-arrow:disabled {
+  color: #555;
+  cursor: not-allowed;
+  opacity: 0 !important;
+}
+
+.gallery-wrapper-no-nav {
+  position: relative;
+}
+
 
 /* --- Estilos do Modal da Galeria --- */
 .modal-overlay {
@@ -117,14 +163,11 @@ h1, h2 {
   z-index: 1000;
   padding: 20px;
   box-sizing: border-box;
-
-  /* Animação de fade-in e fade-out */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
 
-/* Classe que ativa o modal */
 .modal-overlay.is-open {
   opacity: 1;
   visibility: visible;
@@ -135,24 +178,20 @@ h1, h2 {
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-
-  /* Animação de zoom-in */
   transform: scale(0.9);
   transition: transform 0.3s ease;
 }
 
-/* A imagem também anima */
 .modal-overlay.is-open .modal-content {
   transform: scale(1);
 }
-
 
 .modal-content img {
   width: 100%;
   height: auto;
   max-width: 90vw;
   max-height: 90vh;
-  object-fit: contain; /* Garante que a proporção da imagem seja mantida */
+  object-fit: contain;
   display: block;
 }
 
@@ -176,13 +215,12 @@ h1, h2 {
 .about-text p {
   line-height: 1.8;
   font-size: 1.1rem;
-  color: #b3b3b3; /* Cor do texto mais suave que branco puro */
+  color: #b3b3b3;
 }
 
 /* --- Contact Form Section (Dark Mode) --- */
 .contact-section {
   text-align: center;
-  /* background-color: #1a1a1a; Fundo da seção de contato um pouco mais claro */
   padding-bottom: 80px;
 }
 
@@ -227,7 +265,7 @@ h1, h2 {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #fff; /* Borda branca ao focar */
+  border-color: #fff;
 }
 
 .submit-btn {
@@ -255,6 +293,13 @@ h1, h2 {
   color: #888;
 }
 
+/* --- Efeito de Fundo Desfocado para o Modal --- */
+.content-blur {
+  filter: blur(8px) brightness(0.7);
+  transition: filter 0.3s ease-out;
+  pointer-events: none; /* Impede a interação com o fundo */
+}
+
 /* --- Animação de Scroll --- */
 .fade-in-section {
   opacity: 0;
@@ -273,14 +318,14 @@ h1, h2 {
 }
 
 .social-links a {
-  color: #888; /* Cor dos ícones sociais */
-  font-size: 2rem; /* Aumenta o tamanho dos ícones. */
+  color: #888;
+  font-size: 2rem;
   margin: 0 15px;
-  transition: color 0.3s ease; /* Adiciona uma transição suave para o hover */
+  transition: color 0.3s ease;
 } 
 
 .social-links a:hover {
-  color: #fff; /* Altera a cor para branco quando o mouse passa por cima */
+  color: #fff;
 }
 
 /* --- Estilos para o Botão Voltar ao Topo --- */
@@ -301,8 +346,6 @@ h1, h2 {
   justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 999;
-  
-  /* Animação de fade */
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
