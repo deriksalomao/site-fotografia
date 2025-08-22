@@ -33,9 +33,9 @@ const Gallery: React.FC<GalleryProps> = ({ onImageClick }) => {
   const goToNextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1));
   const goToPrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 0));
 
-  return (
+  return (  
     <section id="gallery">
-      <h2>Galeria</h2>
+      <h2>GALERIA</h2>
       <div className="gallery-wrapper">
         <button onClick={goToPrevPage} disabled={currentPage === 0} className="gallery-nav-arrow left" aria-label="Anterior">
           <FaChevronLeft />
