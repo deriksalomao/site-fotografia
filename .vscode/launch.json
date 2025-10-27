@@ -10,6 +10,17 @@
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Script: start",
+      "runtimeExecutable": "npm",
+      "args": [
+        "run",
+        "start"
+      ],
+      "console": "integratedTerminal"
     }
   ]
 }
