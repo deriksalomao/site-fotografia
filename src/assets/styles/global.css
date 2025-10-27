@@ -474,3 +474,14 @@ h1, h2 {
 .orcamento-section .orcamento-card:hover .orcamento-price {
   color: #4a90e2;
 }
+.orcamento-section .orcamento-card .select-plan-btn {
+  margin-top: 1.5rem;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
