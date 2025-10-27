@@ -6,46 +6,48 @@ import About from '../components/ui/About';
 import ContactForm from '../components/ui/ContactForm';
 import BackToTopButton from '../components/common/BackToTopButton';
 import Modal from '../components/common/Modal';
+import Orcamento from '../components/ui/Orcamento';
 
 function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
 
-  const openModal = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
-    setIsModalOpen(true);
-  };
+  const openModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setIsModalOpen(true);
+  };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-  useEffect(() => {
-    const mainContent = document.querySelector('main');
-    const headerContent = document.querySelector('.hero-section');
-    const footerContent = document.querySelector('.App-footer');
-    const elementsToBlur = [mainContent, headerContent, footerContent];
+  useEffect(() => {
+    const mainContent = document.querySelector('main');
+    const headerContent = document.querySelector('.hero-section');
+    const footerContent = document.querySelector('.App-footer');
+    const elementsToBlur = [mainContent, headerContent, footerContent];
 
-    elementsToBlur.forEach(el => el?.classList.toggle('content-blur', isModalOpen));
-  }, [isModalOpen]);
+    elementsToBlur.forEach(el => el?.classList.toggle('content-blur', isModalOpen));
+  }, [isModalOpen]);
 
-  return (
-    <div className="App">
-      <Header />
-      <main>
-        <Gallery onImageClick={openModal} />
-        <About />
-        <ContactForm />
-      </main>
-      <Footer />
-      <BackToTopButton />
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        imageSrc={selectedImage} 
-      />
-    </div>
-  );
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <Gallery onImageClick={openModal} />
+        <About />
+        <Orcamento />
+        <ContactForm />
+      </main>
+      <Footer />
+      <BackToTopButton />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        imageSrc={selectedImage} 
+      />
+    </div>
+  );
 }
 
 export default HomePage;

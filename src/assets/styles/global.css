@@ -1,9 +1,9 @@
-/* --- Estilos de Tipografia --- */
+/* Estilos de Tipografia */
 h1, h2 {
   font-family: 'Playfair Display', serif;
 }
 
-/* --- Hero Section (Header) --- */
+/* Hero Section (Header) */
 .hero-section {
   height: 100vh;
   display: flex;
@@ -23,7 +23,11 @@ h1, h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    to bottom, 
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.5) 25% 
+  );
 }
 
 .hero-content {
@@ -75,7 +79,7 @@ h1, h2 {
   z-index: 1;
 }
 
-/* --- Gallery Section --- */
+/* Gallery Section */
 #gallery h2,
 .about-section h2,
 .contact-section h2 {
@@ -106,7 +110,7 @@ h1, h2 {
     transform: scale(1.03);
 }
 
-/* --- Estilos para Navegação da Galeria (Hover e Fixo) --- */
+/* Estilos para Navegação da Galeria (Hover e Fixo) */
 .gallery-wrapper {
   position: relative;
   display: flex;
@@ -117,7 +121,7 @@ h1, h2 {
 .masonry-content-wrapper {
   flex: 1; 
   min-width: 0;
-  min-height: 500px; /* Garante a altura mínima para estabilizar as setas */
+  min-height: 500px;
 }
 
 .gallery-nav-arrow {
@@ -149,7 +153,7 @@ h1, h2 {
 }
 
 
-/* --- Estilos do Modal da Galeria --- */
+/* Estilos do Modal da Galeria */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -206,7 +210,7 @@ h1, h2 {
   cursor: pointer;
 }
 
-/* --- About Section --- */
+/* About Section */
 .about-section {
   text-align: center;
   max-width: 800px;
@@ -218,7 +222,7 @@ h1, h2 {
   color: #b3b3b3;
 }
 
-/* --- Contact Form Section (Dark Mode) --- */
+/* Contact Form Section */
 .contact-section {
   text-align: center;
   padding-bottom: 80px;
@@ -285,7 +289,7 @@ h1, h2 {
   background-color: #ccc;
 }
 
-/* --- Footer --- */
+/* Footer */
 .App-footer {
   text-align: center;
   padding: 40px;
@@ -293,14 +297,14 @@ h1, h2 {
   color: #888;
 }
 
-/* --- Efeito de Fundo Desfocado para o Modal --- */
+/* Efeito de Fundo Desfocado para o Modal */
 .content-blur {
   filter: blur(8px) brightness(0.7);
   transition: filter 0.3s ease-out;
-  pointer-events: none; /* Impede a interação com o fundo */
+  pointer-events: none;
 }
 
-/* --- Animação de Scroll --- */
+/* Animação de Scroll */
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
@@ -312,7 +316,7 @@ h1, h2 {
   transform: translateY(0);
 }
 
-/* --- Estilos para Ícones Sociais no Rodapé --- */
+/* Estilos para Ícones Sociais no Rodapé */
 .social-links {
   margin-bottom: 20px;
 }
@@ -328,7 +332,7 @@ h1, h2 {
   color: #fff;
 }
 
-/* --- Estilos para o Botão Voltar ao Topo --- */
+/* Estilos para o Botão Voltar ao Topo */
 .back-to-top button {
   position: fixed;
   bottom: 20px;
@@ -363,21 +367,18 @@ h1, h2 {
   transform: scale(1.1) translateY(0);
 }
 
-/* --- Animações de Entrada do Topo --- */
+/* Animações de Entrada do Topo */
 
-/* Esconde os elementos antes da animação */
 .hero-title-animate,
 .hero-subtitle-animate {
   opacity: 0;
 }
-
-/* Aplica a animação quando a classe 'animate' está presente */
 .hero-content.animate .hero-title-animate {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .hero-content.animate .hero-subtitle-animate {
-  animation: fadeInUp 0.8s ease-out 0.3s forwards; /* Atraso de 0.3s para o subtítulo */
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
 /* Definição da animação (Keyframes) */
@@ -390,4 +391,83 @@ h1, h2 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Seção Orçamento (Com Efeito Hover) */
+
+.orcamento-section {
+  background-color: #111;
+  padding: 4rem 0;
+  color: #fff;
+}
+
+.orcamento-section h2 {
+  color: #fff;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* Card Base (Sem destaque fixo) */
+.orcamento-section .orcamento-card {
+  background-color: #1a1a1a;
+  border: 2px solid #333; 
+  border-radius: 8px;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito HOVER (agora aplicado a todos os cards) */
+.orcamento-section .orcamento-card:hover {
+  transform: translateY(-5px);
+  border-color: #4a90e2;
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+}
+
+.orcamento-section .orcamento-card .card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.orcamento-section .orcamento-card ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.orcamento-section .orcamento-card li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.orcamento-section .orcamento-card li svg {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.orcamento-section .icon-check {
+  color: #00bfa5;
+}
+
+.orcamento-section .icon-times {
+  color: #b33939;
+}
+
+/* Preço (Padrão) */
+.orcamento-section .orcamento-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Preço (no HOVER) */
+.orcamento-section .orcamento-card:hover .orcamento-price {
+  color: #4a90e2;
 }
