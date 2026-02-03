@@ -8,7 +8,7 @@ function Orcamento() {
       
       <div className="row justify-content-center">
 
-        {/* --- Card Basic --- */}
+        {/* --- Card Básico --- */}
         <div className="col-md-4 mb-4">
           <div className="card h-100 orcamento-card">
             <div className="card-body d-flex flex-column">
