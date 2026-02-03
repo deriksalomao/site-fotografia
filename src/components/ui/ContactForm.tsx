@@ -11,7 +11,8 @@ function ContactForm() {
               <p>Tem um projeto em mente ou gostaria de fazer um orçamento? Me envie uma mensagem!</p>
             </div>
             
-            <form className="contact-form">
+            <form className="contact-form" name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Nome</label>
                 <input type="text" id="name" name="name" className="form-control" required />

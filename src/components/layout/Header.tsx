@@ -27,9 +27,6 @@ function Header() {
           <h1 className="hero-title-animate">Roberta C. Lima</h1>
           <p className="hero-subtitle-animate">Fotografia Urbana & Estilo de Vida</p>
         </div>
-        <div className="menu-toggle" onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </div>
         <nav className={`main-nav ${menuOpen ? 'open' : ''}`}>
           <a href="#gallery" onClick={closeMenu}>Galeria</a>
           <a href="#about" onClick={closeMenu}>Sobre</a>
@@ -37,6 +34,9 @@ function Header() {
           <a href="#contact" onClick={closeMenu}>Contato</a>
         </nav>
         
+      </div>
+      <div className="menu-toggle" onClick={toggleMenu}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
     </header>
   );

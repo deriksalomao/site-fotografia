@@ -53,15 +53,28 @@ h1, h2 {
 
 .main-nav {
   position: absolute;
-  top: 30px;
+  top: 60px; /* Ajustado para não sobrepor o toggle */
   right: 40px;
   z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.main-nav.open {
+  max-height: 200px; /* Altura suficiente para os links */
+  padding: 10px;
 }
 
 .main-nav a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 5px 0;
   font-size: 1rem;
   font-weight: bold;
   transition: color 0.3s;
@@ -69,6 +82,16 @@ h1, h2 {
 
 .main-nav a:hover {
   color: #a0a0a0;
+}
+
+.menu-toggle {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  z-index: 1;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .hero-section::after {
@@ -93,14 +116,7 @@ h1, h2 {
 }
 
 .gallery-item {
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.gallery-item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  /* Removido opacity 0 e transform, pois LazyLoadImage cuida do lazy loading */
 }
 
 .gallery-item img {
@@ -119,6 +135,14 @@ h1, h2 {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.page-counter {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .masonry-content-wrapper {

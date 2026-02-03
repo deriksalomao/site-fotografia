@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useInView } from 'react-intersection-observer';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // Lógica de importação automática de imagens
-const imageContext = require.context('../../assets/images/portfolio', false, /\.(png|jpe?g|svg)$/);
+const imageContext = require.context('../../assets/images/portfolio', false, /\.(png|jpe?g|svg|webp)$/);
 const allImages: string[] = imageContext.keys().map(imageContext) as string[];
 
 const ITEMS_PER_PAGE = 6;
 
 // Componente para cada item da galeria
 const GalleryItem = ({ image, onClick, index }: { image: string; onClick: () => void; index: number }) => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  // Gerar caminho WebP (assumindo que as imagens WebP têm o mesmo nome com .webp)
+  const webpSrc = image.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+
   return (
-    <div ref={ref} className={`gallery-item ${inView ? 'is-visible' : ''}`} onClick={onClick}>
-      <img src={image} alt={`Fotografia de Roberta C. de Lima ${index + 1}`} />
+    <div className="gallery-item" onClick={onClick}>
+      <picture>
+        <source srcSet={webpSrc} type="image/webp" />
+        <LazyLoadImage
+          src={image}
+          alt={`Fotografia de Roberta C. de Lima ${index + 1}`}
+          effect="blur"
+          placeholderSrc=""
+        />
+      </picture>
     </div>
   );
 };
@@ -59,6 +70,9 @@ const Gallery: React.FC<GalleryProps> = ({ onImageClick }) => {
         <button onClick={goToNextPage} disabled={currentPage >= totalPages - 1} className="gallery-nav-arrow right" aria-label="Próximo">
           <FaChevronRight />
         </button>
+      </div>
+      <div className="page-counter">
+        Página {currentPage + 1} de {totalPages}
       </div>
     </section>
   );
